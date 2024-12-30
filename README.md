@@ -36,16 +36,6 @@
     - `username` (string): Имя пользователя или email.
     - `password` (string): Пароль пользователя.
 
-Используйте этот endpoint для получения Bearer-токена.
-
-2) - **URL**: `{{url}}/api/available-cars`  
-     **Метод**: POST  
-     **Body параметры**:
-- `start_date` (string): Дата начала аренды в формате `YYYY-mm-dd`.
-- `end_date` (string): Дата окончания аренды в формате `YYYY-mm-dd`.
-- `car_model_id` (integer): Идентификатор модели автомобиля.
-- `comfort_category_id` (integer): Идентификатор категории комфорта.
-
 ### Пример запроса:
 
 ```bash
@@ -54,7 +44,7 @@ curl -X POST {{url}}/api/available-cars \
      -d "end_date=2024-01-10" \
      -d "car_model_id=5" \
      -d "comfort_category_id=2"
-
+```
 ### Список пользователей
 | User Email          | Password |
 |---------------------|----------|
@@ -68,6 +58,18 @@ curl -X POST {{url}}/api/available-cars \
 | user8@gmail.com     | 1234     |
 | user9@gmail.com     | 1234     |
 | user10@gmail.com    | 1234     |
+
+### Используйте этот endpoint для получения Bearer-токена.
+
+2) - **URL**: `{{url}}/api/available-cars`  
+     **Метод**: POST  
+     **Body параметры**:
+- `start_date` (string): Дата начала аренды в формате `YYYY-mm-dd`.
+- `end_date` (string): Дата окончания аренды в формате `YYYY-mm-dd`.
+- `car_model_id` (integer): Идентификатор модели автомобиля.
+- `comfort_category_id` (integer): Идентификатор категории комфорта.
+
+
 ### Доступ для администратора
 Для доступа к админке используйте следующие данные:
 - **URL**: `{{url}}/admin`
