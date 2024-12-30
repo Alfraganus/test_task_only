@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\CarSearchController;
+use App\Http\Controllers\API\LoginController;
+use App\Http\Controllers\AvailableCarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/available-cars', [CarSearchController::class, 'getAvailableCars']);
 });
+Route::post('/auth/login', [LoginController::class, '__invoke']);

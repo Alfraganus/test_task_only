@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvailableCarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::middleware(['web', backpack_middleware()])->group(function () {
+    Route::get('/admin/dashboard', [AvailableCarController::class,'filter'])->name('car.bookings.dashboard');
+    Route::get('/admin/bookings/filter', [AvailableCarController::class,'filter'])->name('car.bookings.filter');
 });
