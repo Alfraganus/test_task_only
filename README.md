@@ -59,7 +59,6 @@ curl -X POST {{url}}/api/available-cars \
 | user9@gmail.com     | 1234     |
 | user10@gmail.com    | 1234     |
 
-### Используйте этот endpoint для получения Bearer-токена.
 
 2) - **URL**: `{{url}}/api/available-cars`  
      **Метод**: POST  
