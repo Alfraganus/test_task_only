@@ -7,6 +7,7 @@ use App\Http\Service\WebCarSearchService;
 use App\DTO\CarSearchCriteria;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 
 class AvailableCarController extends BaseController
 {
@@ -20,10 +21,12 @@ class AvailableCarController extends BaseController
     public function filter(Request $request)
     {
         $users = User::all();
+        $availableCars = [];
 
-        $criteria = CarSearchCriteria::fromRequest($request);
-
-        $availableCars = $this->carSearchService->filter($criteria);
+        if ($request->filled('start_date') && $request->filled('end_date')) {
+            $criteria = CarSearchCriteria::fromRequest($request);
+            $availableCars = $this->carSearchService->filter($criteria);
+        }
 
         return view('admin.filter', compact('users', 'availableCars'));
     }

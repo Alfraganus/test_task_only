@@ -7,13 +7,13 @@ use App\Models\CarBooking;
 use App\Models\PositionComfortCategory;
 use App\DTO\CarSearchCriteria;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class WebCarSearchService
 {
     public function filter(CarSearchCriteria $criteria)
     {
         $filteredCars = $this->getFilteredCars($criteria);
-
         $bookedCarIds = $this->getBookedCarIds($criteria);
 
         return $this->getAvailableCars($filteredCars, $bookedCarIds);

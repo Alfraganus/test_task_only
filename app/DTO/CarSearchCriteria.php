@@ -22,7 +22,7 @@ class CarSearchCriteria
     public static function fromRequest($request)
     {
         return new self(
-            $request->user()->id,
+            $request->userId,
             $request->start_date,
             $request->end_date,
             $request->car_model_id,

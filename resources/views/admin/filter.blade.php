@@ -6,10 +6,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="user">Select User</label>
-                    <select name="user" id="user" class="form-control">
+                    <select name="userId" id="user" class="form-control">
                         <option value="">Select user</option>
                         @foreach($users as $user)
-                            <option value="{{ $user->id }}" {{ request()->user == $user->id ? 'selected' : '' }}>{{ $user->name ?? '' }}</option>
+                            <option value="{{ $user->id }}" {{ request()->userId == $user->id ? 'selected' : '' }}>{{ $user->name ?? '' }}</option>
                         @endforeach
                     </select>
                 </div>
