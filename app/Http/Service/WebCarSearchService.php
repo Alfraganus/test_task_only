@@ -6,8 +6,8 @@ use App\Models\Car;
 use App\Models\CarBooking;
 use App\Models\PositionComfortCategory;
 use App\DTO\CarSearchCriteria;
+use App\Models\UserProfile;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 
 class WebCarSearchService
 {
@@ -21,7 +21,9 @@ class WebCarSearchService
 
     protected function getFilteredCars(CarSearchCriteria $criteria): Collection
     {
-        $userPositionIds = PositionComfortCategory::where('position_id', $criteria->userId)
+        $userProfile = UserProfile::query()->where('user_id',$criteria->userId)->first();
+
+        $userPositionIds = PositionComfortCategory::where('position_id', $userProfile->position_id)
             ->pluck('comfort_category_id');
 
         return Car::whereIn('comfort_category_id', $userPositionIds)->get();
