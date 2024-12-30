@@ -8,6 +8,7 @@ use App\DTO\CarSearchCriteria;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AvailableCarController extends BaseController
 {
